@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IntersectionObserver Example</title>
+    <style>
+      .content {
+        height: 1500px;
+        background-color: lightcoral;
+      }
+      #yourElement {
+        margin-top: 700px;
+        height: 100px;
+        background-color: skyblue;
+        text-align: center;
+        line-height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div id="yourElement">I'm Observed!</div>
+    </div>
+
+    <script>
+      const element = document.getElementById("yourElement");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              console.log("Element is in the viewport");
+            } else {
+              console.log("Element is NOT in the viewport");
+            }
+          });
+        },
+        {
+          root: null, // 视口为根
+          rootMargin: "0px", // 无偏移
+          threshold: 0, // 元素只要部分可见就触发
+        }
+      );
+
+      observer.observe(element);
+    </script>
+  </body>
+</html>

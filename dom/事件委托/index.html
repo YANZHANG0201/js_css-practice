@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Debounce Example</title>
+    <style></style>
+  </head>
+  <body>
+    <ul>
+      <li>i am yan1</li>
+      <li>i am yan2</li>
+      <li>i am yan3</li>
+      <li>i am yan4</li>
+      <li>i am yan5</li>
+      <li>i am yan6</li>
+    </ul>
+  </body>
+  <script>
+    //
+    document.querySelector("ul").onclick = function (e) {
+      //事件委托不能用this，因为this是父级
+      //e.target 事件目标--事件触发源 和 事件源有区别 事件源是注册事件的元素 事件触发源是那个元素触发的
+      alert(e.target.innerText);
+    };
+    //动态新增
+    let newLi = document.createElement("li");
+    newLi.innerText = "iaaa";
+    document.querySelector("ul").appendChild(newLi);
+  </script>
+</html>

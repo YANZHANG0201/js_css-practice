@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Debounce Example</title>
+    <style></style>
+  </head>
+  <body>
+    <button>click me</button>
+  </body>
+  <script>
+    let btn = document.querySelector("button");
+    let body = document.body;
+    btn.style.color = "black";
+    btn.onclick = function () {
+      if (this.style.color === "black") {
+        this.style.color = "white";
+        this.innerText = "On";
+        body.style.backgroundColor = "black";
+      } else {
+        this.style.color = "black";
+        this.innerText = "Off";
+        body.style.backgroundColor = "";
+      }
+    };
+  </script>
+</html>

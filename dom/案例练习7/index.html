@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example6</title>
+    <style>
+      .pink {
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="pink">button1</button>
+    <button>button2</button>
+    <button>button3</button>
+    <button>button4</button>
+    <button>button5</button>
+  </body>
+  <script>
+    let btnList = document.querySelectorAll("button");
+    for (let i = 0; i < btnList.length; i++) {
+      btnList[i].onclick = function () {
+        document.querySelector(".pink").classList.remove("pink");
+        this.classList.add("pink");
+      };
+      //   btnList[i].onclick = function () {
+      //     console.log(this);
+      //     for (let j = 0; j < btnList.length; j++) {
+      //       console.log(i);
+      //       if (i === j) {
+      //         btnList[j].style.backgroundColor = "pink";
+      //       } else {
+      //         btnList[j].style.backgroundColor = "";
+      //       }
+      //     }
+      //另一种写法先遍历把其他的都没有背景颜色 然后在给自己加颜色
+    }
+  </script>
+</html>

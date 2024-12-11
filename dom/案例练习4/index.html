@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Debounce Example</title>
+    <style></style>
+  </head>
+  <body>
+    <div class="controls">
+      <textarea
+        placeholder="say something"
+        id="area"
+        cols="30"
+        rows="10"
+        maxlength="200"
+      >
+      </textarea>
+      <div>
+        <span class="userCount">0</span>
+        <span>/</span>
+        <span>200</span>
+      </div>
+    </div>
+  </body>
+  <script>
+    //输入事件--oninput--输入内容就会触发
+    let wordarea = document.querySelector("#area");
+    let count = document.querySelector(".userCount");
+
+    area.oninput = function () {
+      console.log(this.value.length);
+      count.innerText = this.value.length;
+    };
+  </script>
+</html>

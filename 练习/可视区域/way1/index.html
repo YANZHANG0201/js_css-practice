@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>offsetTop & scrollTop Example</title>
+    <style>
+      .content {
+        height: 1500px;
+        background-color: lightblue;
+      }
+      #yourElement {
+        height: 200px;
+        background-color: orange;
+        text-align: center;
+        line-height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="yourElement">Hello, I'm here!</div>
+    <div class="content"></div>
+
+    <script>
+      function isElementInViewport(el) {
+        const scrollTop =
+          window.pageYOffset || document.documentElement.scrollTop;
+        const viewportHeight =
+          window.innerHeight || document.documentElement.clientHeight;
+        const offsetTop = el.offsetTop;
+
+        return (
+          offsetTop < scrollTop + viewportHeight &&
+          offsetTop + el.offsetHeight > scrollTop
+        );
+      }
+
+      const element = document.getElementById("yourElement");
+
+      window.addEventListener("scroll", () => {
+        if (isElementInViewport(element)) {
+          console.log("Element is in the viewport");
+        } else {
+          console.log("Element is NOT in the viewport");
+        }
+      });
+    </script>
+  </body>
+</html>

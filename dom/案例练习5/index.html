@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Input with Dropdown</title>
+    <style>
+      /* 通用样式 */
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f4f4f4;
+      }
+
+      .input-container {
+        position: relative;
+        width: 300px;
+      }
+
+      /* 输入框样式 */
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+        transition: all 0.3s ease;
+      }
+
+      input[type="text"]:focus {
+        border-color: #007bff; /* 聚焦边框颜色 */
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* 聚焦阴影 */
+      }
+
+      /* 下拉框样式 */
+      .dropdown {
+        position: absolute;
+        top: 100%; /* 紧贴输入框 */
+        left: 0;
+        width: 100%;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: none; /* 默认隐藏 */
+        z-index: 10;
+      }
+
+      .dropdown ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .dropdown li {
+        padding: 10px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+
+      .dropdown li:hover {
+        background-color: #f4f4f4;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="input-container">
+      <input type="text" id="inputBox" placeholder="Type here..." />
+      <div class="dropdown" id="dropdown">
+        <ul>
+          <li>Option 1</li>
+          <li>Option 2</li>
+          <li>Option 3</li>
+          <li>Option 4</li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      const inputBox = document.getElementById("inputBox");
+      const dropdown = document.getElementById("dropdown");
+
+      inputBox.onfocus = function () {
+        dropdown.style.display = "block";
+      };
+
+      inputBox.onblur = function () {
+        dropdown.style.display = "none";
+      };
+
+      // 当输入框获取焦点时显示下拉框
+      //   inputBox.addEventListener("focus", () => {
+      //     dropdown.style.display = "block";
+      //   });
+
+      // 当输入框失去焦点时隐藏下拉框
+      //   inputBox.addEventListener("blur", () => {
+      //     setTimeout(() => {
+      //       dropdown.style.display = "none";
+      //     }, 100); // 延迟隐藏，确保点击选项生效
+      //   });
+
+      // 点击选项时，将选项内容填入输入框
+      //   dropdown.addEventListener("click", (event) => {
+      //     if (event.target.tagName === "LI") {
+      //       inputBox.value = event.target.textContent;
+      //       dropdown.style.display = "none";
+      //     }
+      //   });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Debounce Example</title>
+    <style>
+      #small {
+        width: 200px;
+        height: 200px;
+      }
+      #big {
+        width: 90px;
+        height: 90px;
+        display: none; /* 默认隐藏 */
+      }
+      #big img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="small">Hover over me</div>
+    <div id="big">
+      <img src="image/1.jpeg" alt="Large Image" />
+    </div>
+  </body>
+  <script>
+    let small = document.querySelector("#small");
+    let big = document.querySelector("#big");
+
+    // 鼠标移入时显示 #big
+    small.onmouseover = function () {
+      big.style.display = "flex";
+    };
+
+    // 鼠标移出时隐藏 #big
+    small.onmouseout = function () {
+      big.style.display = "none";
+    };
+  </script>
+</html>
