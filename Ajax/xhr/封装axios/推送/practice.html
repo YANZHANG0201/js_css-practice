@@ -10,23 +10,15 @@
   <body>
     <button class="reg-btn">注册用户</button>
     <script>
-      /**
-       * 目标：封装_简易axios函数_注册用户
-       *  1. 判断有data选项，携带请求体
-       *  2. 转换数据类型，在send中发送
-       *  3. 使用myAxios函数，完成注册用户
-       */
       function myAxios(config) {
-        return new Promise((resolve, reject) => {
-          const xhr = new XMLHttpRequest();
-
+        let p = new Promise((resolve, reject) => {
+          let xhr = new XMLHttpRequest();
           if (config.params) {
-            const paramsObj = new URLSearchParams(config.params);
-            const queryString = paramsObj.toString();
-            config.url += `?${queryString}`;
+            const paraObj = new URLSearchParams(config.params);
+            const querySrting = paraObj.toString();
+            config.url = config.url + `?${querySrting}`;
           }
           xhr.open(config.method || "GET", config.url);
-
           xhr.addEventListener("loadend", () => {
             if (xhr.status >= 200 && xhr.status < 300) {
               resolve(JSON.parse(xhr.response));
@@ -34,26 +26,23 @@
               reject(new Error(xhr.response));
             }
           });
-          // 1. 判断有data选项，携带请求体
           if (config.data) {
-            // 2. 转换数据类型，在send中发送
-            const jsonStr = JSON.stringify(config.data);
+            const datajson = JSON.stringify(config.data);
             xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.send(jsonStr);
+            xhr.send(datajson);
           } else {
-            // 如果没有请求体数据，正常的发起请求
             xhr.send();
           }
         });
+        return p;
       }
-
       document.querySelector(".reg-btn").addEventListener("click", () => {
         // 3. 使用myAxios函数，完成注册用户
         myAxios({
           url: "http://hmajax.itheima.net/api/register",
           method: "POST",
           data: {
-            username: "itheima999sss",
+            username: "itheima999ss",
             password: "666666",
           },
         })

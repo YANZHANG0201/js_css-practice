@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>案例_使用Promise+XHR_获取省份列表</title>
+  </head>
+
+  <body>
+    <p class="my-p"></p>
+    <script>
+      let p = new Promise((resolve, reject) => {
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", `http://hmajax.itheima.net/api/province`);
+        xhr.addEventListener("loadend", () => {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            resolve(JSON.parse(xhr.response));
+          } else {
+            reject(new Error(xhr.response));
+          }
+        });
+        xhr.send();
+      });
+      p.then((res) => {
+        console.log(res);
+      }).catch((err) => {
+        console.log(err);
+      });
+    </script>
+  </body>
+</html>
